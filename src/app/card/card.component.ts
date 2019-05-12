@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -6,8 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  @Input() dataSource;
   card;
+  @Input() dataSource;
+  @Output() viewEvent: EventEmitter<any> = new EventEmitter();
 
   constructor() {}
 
@@ -22,5 +23,10 @@ export class CardComponent implements OnInit {
         comments: this.dataSource.num_comments || null
       };
     }
+  }
+
+  viewDetails() {
+    this.card.clicked = true;
+    this.viewEvent.emit(this.card);
   }
 }
