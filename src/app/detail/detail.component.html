@@ -1,3 +1,19 @@
-<p>
-  detail works!
-</p>
+<ng-container *ngIf="dataSource">
+  <div class="row">
+    <div class="col-md-10 col-lg-8 mx-auto">
+      <article>
+        <div class="card shadow border-0">
+          <div class="card-body">
+            <h5 class="card-title">{{ dataSource.title }}</h5>
+            <p class="card-text">
+              {{ dataSource.content }}
+            </p>
+            <p class="card-text">
+              <small class="text-muted">{{ dataSource.date }}</small>
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</ng-container>

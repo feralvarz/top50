@@ -2,7 +2,7 @@
   <div class="row no-gutters h-100">
     <aside class="col-4 col-lg-5">
       <ng-container *ngIf="posts.length; else noPosts">
-        <app-card *ngFor="let post of posts" [dataSource]="post.data"></app-card>
+        <app-card *ngFor="let post of posts" [dataSource]="post.data" (viewEvent)="seeDetails($event)"></app-card>
       </ng-container>
 
       <ng-template #noPosts>
@@ -14,23 +14,7 @@
       </ng-template>
     </aside>
     <section class="col">
-      <div class="row">
-        <div class="col-md-10 col-lg-8 mx-auto">
-          <article>
-            <div class="card shadow border-0">
-              <div class="card-body">
-                <h5 class="card-title">Detail Component</h5>
-                <p class="card-text">
-                  Detail content... Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis eligendi unde, ex
-                  quisquam amet aut. Nulla soluta iusto maiores molestiae nesciunt ex voluptates ullam quaerat, ratione
-                  molestias dolor consequatur quas?
-                </p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
+      <app-detail [dataSource]="details"></app-detail>
     </section>
   </div>
 </div>

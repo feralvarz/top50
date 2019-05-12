@@ -10,7 +10,12 @@ const mockData = require('./mockdata.json');
 })
 export class AppComponent {
   posts;
+  details;
   constructor() {
     this.posts = mockData.data.children;
+  }
+
+  seeDetails(content) {
+    this.details = content;
   }
 }
