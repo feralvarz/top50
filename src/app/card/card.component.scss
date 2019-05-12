@@ -1,0 +1,16 @@
+.card {
+  position: relative;
+  &.readed {
+    background: #f0f0f0;
+  }
+}
+
+button.close {
+  &:focus {
+    outline: none;
+  }
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+}
