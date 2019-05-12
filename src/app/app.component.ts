@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+declare const require;
+
+const mockData = require('./mockdata.json');
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  constructor() {
+    console.log(mockData);
+  }
 }
