@@ -9,8 +9,9 @@ const mockData = require('./mockdata.json');
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+  posts;
   constructor() {
     console.log(mockData);
+    this.posts = mockData.data.children;
   }
 }
