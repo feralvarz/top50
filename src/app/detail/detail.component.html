@@ -3,6 +3,7 @@
     <div class="col-md-10 col-lg-8 mx-auto">
       <article>
         <div class="card shadow border-0">
+          <img *ngIf="dataSource.img" class="card-img-top" src="{{ dataSource.img }}" alt="Post image" />
           <div class="card-body">
             <h5 class="card-title">{{ dataSource.title }}</h5>
             <p class="card-text">

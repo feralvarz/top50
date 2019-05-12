@@ -18,4 +18,9 @@ export class AppComponent {
   seeDetails(content) {
     this.details = content;
   }
+
+  removeCard(index) {
+    console.log(index);
+    this.posts.splice(index, 1);
+  }
 }

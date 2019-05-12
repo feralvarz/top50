@@ -1,5 +1,5 @@
 <div class="card" (click)="viewDetails()" [class.readed]="card.clicked">
-  <button type="button" class="close" aria-label="Close">
+  <button type="button" class="close" aria-label="Close" (click)="remove()">
     <span aria-hidden="true">&times;</span>
   </button>
   <div class="card-body">

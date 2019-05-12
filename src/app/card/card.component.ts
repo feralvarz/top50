@@ -9,6 +9,7 @@ export class CardComponent implements OnInit {
   card;
   @Input() dataSource;
   @Output() viewEvent: EventEmitter<any> = new EventEmitter();
+  @Output() removeEvent: EventEmitter<boolean> = new EventEmitter();
 
   constructor() {}
 
@@ -28,5 +29,9 @@ export class CardComponent implements OnInit {
   viewDetails() {
     this.card.clicked = true;
     this.viewEvent.emit(this.card);
+  }
+
+  remove() {
+    this.removeEvent.emit(true);
   }
 }
