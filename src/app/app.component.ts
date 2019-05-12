@@ -11,7 +11,6 @@ const mockData = require('./mockdata.json');
 export class AppComponent {
   posts;
   constructor() {
-    console.log(mockData);
     this.posts = mockData.data.children;
   }
 }
