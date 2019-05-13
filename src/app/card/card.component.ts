@@ -1,12 +1,26 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { trigger, state, style } from '@angular/animations';
 import * as moment from 'moment';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  styleUrls: ['./card.component.scss'],
+  animations: [
+    trigger('cardAnim', [
+      state(
+        'removed',
+        style({
+          animation: 'remove 1000ms',
+          'animation-iteration-count': 1
+        })
+      )
+    ])
+  ]
 })
 export class CardComponent implements OnInit {
   card;
+  animState: string;
+
   @Input() dataSource;
   @Output() viewEvent: EventEmitter<any> = new EventEmitter();
   @Output() removeEvent: EventEmitter<boolean> = new EventEmitter();
@@ -41,6 +55,10 @@ export class CardComponent implements OnInit {
   }
 
   remove() {
-    this.removeEvent.emit(true);
+    this.animState = 'removed';
+    setTimeout(() => {
+      this.viewEvent.emit(null);
+      this.removeEvent.emit(true);
+    }, 1001);
   }
 }

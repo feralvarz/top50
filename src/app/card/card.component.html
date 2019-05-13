@@ -1,4 +1,4 @@
-<div class="card" (click)="viewDetails()" [class.readed]="card.clicked">
+<div class="card" [class.readed]="card.clicked" (click)="viewDetails()" [@cardAnim]="animState">
   <button type="button" class="close" aria-label="Close" (click)="remove()">
     <span aria-hidden="true">&times;</span>
   </button>
