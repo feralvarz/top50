@@ -1,18 +1,32 @@
 import { Component } from '@angular/core';
-declare const require;
-
-const mockData = require('./mockdata.json');
+import { trigger, state, style } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('listAnim', [
+      state(
+        'removed',
+        style({
+          animation: 'remove 800ms',
+          'animation-iteration-count': 1
+        })
+      )
+    ])
+  ]
 })
 export class AppComponent {
   posts = [];
   details;
+  animState;
+
   constructor() {
-    // this.posts = mockData.data.children;
+    this.getPosts();
+  }
+
+  getPosts() {
     fetch(`//api.reddit.com/top?limit=50`)
       .then(response => response.json())
       .then(list => (this.posts = list.data.children));
@@ -24,5 +38,13 @@ export class AppComponent {
 
   removeCard(index) {
     this.posts.splice(index, 1);
+  }
+
+  removeAll() {
+    this.animState = 'removed';
+
+    setTimeout(() => {
+      this.posts = [];
+    }, 400);
   }
 }

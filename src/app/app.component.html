@@ -2,12 +2,17 @@
   <div class="row no-gutters h-100">
     <aside class="col-4 col-lg-5">
       <ng-container *ngIf="posts.length; else noPosts">
-        <app-card
-          *ngFor="let post of posts; let i = index"
-          [dataSource]="post.data"
-          (viewEvent)="seeDetails($event)"
-          (removeEvent)="removeCard(i)"
-        ></app-card>
+        <div [@listAnim]="animState">
+          <app-card
+            *ngFor="let post of posts; let i = index"
+            [dataSource]="post.data"
+            (viewEvent)="seeDetails($event)"
+            (removeEvent)="removeCard(i)"
+          ></app-card>
+        </div>
+        <button type="button" class="btn btn-secondary btn-lg btn-block" (click)="removeAll()">
+          Remove All
+        </button>
       </ng-container>
 
       <ng-template #noPosts>
